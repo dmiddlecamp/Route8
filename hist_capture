@@ -17,73 +17,23 @@ sort -t, --key=10 stop_times_8.txt >> stop_id_sorted.txt
 echo "Linking up the full list of stops (with lat,lon etc) with route-8 stops"
 sort -t, stops.txt >> stops_all_sorted.txt
 join -t, -1 1 -2 10 stops_all_sorted.txt stop_id_sorted.txt > stops8.txt
-more stops8.txt 
-head -n1 stops8.txt
-echo "trip_id,route_id,service_id,trip_headsign,block_id,shape_id,wheelchair_accessible,arrival_time,departure_time,stop_id,stop_sequence,pickup_type,drop_off_type"
-head -n1 stops.txt 
-echo "stop_id,stop_name,stop_desc,stop_lat,stop_lon,stop_street,stop_city,stop_region,stop_postcode,stop_country,zone_id,wheelchair_boarding,stop_url,trip_id,route_id,service_id,trip_headsign,block_id,shape_id,wheelchair_accessible,arrival_time,departure_time,stop_sequence,pickup_type,drop_off_type"
-more stops8.txt 
-ll /tmp/
-#
-# This is prepending the header line to the data file
+echo "Prepend the header line to the data file"
 echo "stop_id,stop_name,stop_desc,stop_lat,stop_lon,stop_street,stop_city,stop_region,stop_postcode,stop_country,zone_id,wheelchair_boarding,stop_url,trip_id,route_id,service_id,trip_headsign,block_id,shape_id,wheelchair_accessible,arrival_time,departure_time,stop_sequence,pickup_type,drop_off_type" > /tmp/fileyy
 cat stops8.txt >> /tmp/fileyy 
 cp /tmp/fileyy stops8_header.txt
-more stops8_header.txt 
-man cut
-man uniq
-ll
-man cut
 # Then here's some field extraction to check out how many bus visits there 
 # are per day and what kinds of frequency there is.
-cut -f 1 stops8_header.txt | more
-man cut
-cut -d, -f 1 stops8_header.txt | more
-ll
-cut -d, -f 1 stops8.txt | more
-cut -d, -f 1 stops8.txt | uniq -c
-more stops8.txt 
-cut -d, -f 1,14 | more
-cut -d, -f 1,14 stops8.txt | more
-cut -d, -f 1,14 stops8.txt | uniq -c
-more stops8.txt 
-cut -d, -f 1,15 stops8.txt | uniq -c
-more stops8.txt 
-cut -d, -f 1,16 stops8.txt | uniq -c
-cut -d, -f 1,16 stops8.txt | uniq -c | more
-cut -d, -f 1,16 stops8.txt | sort | uniq -c
-more stops8.txt 
-cut -d, -f 2,16 stops8.txt | sort | uniq -c
-cat stops.txt 
-cd code/vizhoods/
-ll
-git clone git@github.com/dmiddlecamp/route8.git
-git clone git@github.com:dmiddlecamp/route8.git
-git clone git@github.com:dmiddlecamp/Route8.git
-ll
-cd Route8/
-ll
-ll Presentation/
-cut -d, -f 2,21 stops8.txt | more
-cut -d, -f 2,21 stops8.txt | sort | more
-cut -d, -f 2,16,21 stops8.txt | sort | more
-head stops8_header.txt 
-cp stops8_header.txt ../../../Route8/
-cd ../../../Route8/
-ll
-gs
-git add stops8_header.txt
-gs
-gc -a
-git reset HEAD .
-gs
-vi stops8_header.txt 
-gs
-git add stops8_header.txt
-gc
-git remote -v
-git pull --rebase
-glogs --graph --decorate
-git push origin master
-lla ~
-more ~/.bash_history 
+# cut -d, -f 1 stops8_header.txt | more
+# cut -d, -f 1 stops8.txt | more
+# cut -d, -f 1 stops8.txt | uniq -c
+# cut -d, -f 1,14 | more
+# cut -d, -f 1,14 stops8.txt | more
+# cut -d, -f 1,14 stops8.txt | uniq -c
+# cut -d, -f 1,15 stops8.txt | uniq -c
+# cut -d, -f 1,16 stops8.txt | uniq -c
+# cut -d, -f 1,16 stops8.txt | uniq -c | more
+# cut -d, -f 1,16 stops8.txt | sort | uniq -c
+# cut -d, -f 2,16 stops8.txt | sort | uniq -c
+# cut -d, -f 2,21 stops8.txt | more
+# cut -d, -f 2,21 stops8.txt | sort | more
+# cut -d, -f 2,16,21 stops8.txt | sort | more
